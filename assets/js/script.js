@@ -1,9 +1,33 @@
 // Assignment code here
 
-
 // Get references to the #generate element
 var generateBtn = document.querySelector("#generate");
 
+// Need to prompt user to provide password options
+function generatePassword() {
+  var userCharacters = prompt(
+    "How many characters should the password include?"
+  );
+  var passwordIncld = passwordChar(userCharacters);
+  if (passwordIncld) {
+    
+    var inclNumCharacters = confirm(
+      "Numbers Characters Confirmed"
+    );
+    
+    var inclLowCaseCharacters = confirm(
+      "Lower Case Characters Confirmed"
+    );
+    
+    var inclUpCaseCharacters = confirm(
+      "Upper Case Characters Confirmed"
+    );
+    
+    var inclSpecCharacters = confirm(
+      "Special Characters Confirmed"
+    );
+  }
+}
 
 
 
