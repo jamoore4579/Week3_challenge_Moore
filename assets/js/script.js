@@ -44,6 +44,16 @@ function generatePassword() {
   }
 }
 
+// Created an Array to contain character types needed for the password
+var selectCharacters = [];
+
+//Created an array that will include a one character of each type
+var neededCharacters = [];
+
+
+if (inclNumCharacters) {
+
+}
 
 
 
