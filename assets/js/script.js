@@ -44,18 +44,45 @@ function generatePassword() {
   }
 }
 
+// Check to ensure each char type is used and stops if false
+if ([inclNumCharacters, inclLowCaseCharacters, inclUpCaseCharacters, inclSpecCharacters].includes(true))
+
 // Created an Array to contain character types needed for the password
 var selectCharacters = [];
+console.log("Array #1")
 
-//Created an array that will include a one character of each type
+// Created an array that will include a one character of each type
 var neededCharacters = [];
+console.log("Array #2")
 
-
+// Create a loop that checks to make sure each character type was included
 if (inclNumCharacters) {
-
+  selectCharacters = selectCharacters.concat(numCharacters);
+  neededCharacters.push(
+    numCharacters[Math.floor(Math.random() * numCharacters.length)]
+  );
 }
 
+if (inclLowCaseCharacters) {
+  selectCharacters = selectCharacters.concat(lowerCaseCharacters);
+  neededCharacters.push(
+    lowerCaseCharacters[Math.floor(Math.random() * lowerCaseCharacters.length)]
+  );
+}
 
+if (inclUpCaseCharacters) {
+  selectCharacters = selectCharacters.concat(upperCaseCharacters);
+  neededCharacters.push(
+    upperCaseCharacters[Math.floor(Math.random() * upperCaseCharacters.length)]
+  );
+}
+
+if (inclSpecCharacters) {
+  selectCharacters = selectCharacters.concat(specCharacters);
+  neededCharacters.push(
+    specCharacters[Math.floor(Math.random() * specCharacters.length)]
+  );
+}
 
 // Write password to the #password input
 function writePassword() {
@@ -64,6 +91,13 @@ function writePassword() {
 
   passwordText.value = password;
 
+}
+
+// For Loop to determine the random characters
+var randomCharacter = [];
+for (var i = 0; i < userCharacters; i++) {
+  var character = Math.floor(Math.random() * selectCharacters.length);
+  randomCharacter.push(selectCharacters[character]);
 }
 
 // Add event listener to generate button
