@@ -18,6 +18,11 @@ function passwordChar(userCharacters) {
   return true;
 }
 
+// Get Selected characters from each char type
+function getSelectedCharacters() {
+  return allCharacters[Math.floor(Math.random() * allCharacters.length)];
+}
+
 // Need to prompt user to provide password options
 function generatePassword() {
   var userCharacters = prompt(
@@ -48,11 +53,9 @@ if ([inclNumCharacters, inclLowCaseCharacters, inclUpCaseCharacters, inclSpecCha
 
   // Created an Array to contain character types needed for the password
   var selectCharacters = [];
-  console.log("Array #1")
 
   // Created an array that will include a one character of each type
   var neededCharacters = [];
-  console.log("Array #2")
 
   // Create a loop that checks to make sure each character type was included
   if (inclNumCharacters) {
@@ -62,47 +65,47 @@ if ([inclNumCharacters, inclLowCaseCharacters, inclUpCaseCharacters, inclSpecCha
     );
   }
 
-if (inclLowCaseCharacters) {
-  selectCharacters = selectCharacters.concat(lowerCaseCharacters);
-  neededCharacters.push(
-    lowerCaseCharacters[Math.floor(Math.random() * lowerCaseCharacters.length)]
-  );
-}
-
-if (inclUpCaseCharacters) {
-  selectCharacters = selectCharacters.concat(upperCaseCharacters);
-  neededCharacters.push(
-    upperCaseCharacters[Math.floor(Math.random() * upperCaseCharacters.length)]
-  );
-}
-
-if (inclSpecCharacters) {
-  selectCharacters = selectCharacters.concat(specCharacters);
-  neededCharacters.push(
-    specCharacters[Math.floor(Math.random() * specCharacters.length)]
-  );
-}
-
-// For Loop to determine the random characters
-var randomCharacter = [];
-for (var i = 0; i < userCharacters; i++) {
-  var character = Math.floor(Math.random() * selectCharacters.length);
-  randomCharacter.push(selectCharacters[character]);
-}
-
-var replace = {}
-
-// While loop
-while (neededCharacters.length > 0) {
-  var replaceChar = Math.floor(Math.random() * randomCharacter.length);
-  if (!replace[replaceChar]) {
-    // **w3schools** pop removing the last element of the array
-    randomCharacter[replaceChar] = neededCharacters.pop();
-    replace[replaceChar] = true;
+  if (inclLowCaseCharacters) {
+    selectCharacters = selectCharacters.concat(lowerCaseCharacters);
+    neededCharacters.push(
+      lowerCaseCharacters[Math.floor(Math.random() * lowerCaseCharacters.length)]
+    );
   }
-}
-// **w3schools** join returns the array as a string
-return replace.join(" ")
+
+  if (inclUpCaseCharacters) {
+    selectCharacters = selectCharacters.concat(upperCaseCharacters);
+    neededCharacters.push(
+      upperCaseCharacters[Math.floor(Math.random() * upperCaseCharacters.length)]
+    );
+  }
+
+  if (inclSpecCharacters) {
+    selectCharacters = selectCharacters.concat(specCharacters);
+    neededCharacters.push(
+      specCharacters[Math.floor(Math.random() * specCharacters.length)]
+    );
+  }
+
+  // For Loop to determine the random characters
+  var randomCharacter = [];
+  for (var i = 0; i < userCharacters; i++) {
+    var character = Math.floor(Math.random() * selectCharacters.length);
+    randomCharacter.push(selectCharacters[character]);
+  }
+
+  var replace = {};
+
+  // While loop
+  while (neededCharacters.length > 0) {
+    var replaceChar = Math.floor(Math.random() * randomCharacter.length);
+    if (!replace[replaceChar]) {
+      // **w3schools** pop removing the last element of the array
+      randomCharacter[replaceChar] = neededCharacters.pop();
+      replace[replaceChar] = true;
+    }
+  }
+  // **w3schools** join returns the array as a string
+  return randomCharacter.join("");
 
 }
 
