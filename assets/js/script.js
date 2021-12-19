@@ -19,7 +19,7 @@ function passwordChar(userCharacters) {
 }
 
 // Need to prompt user to provide password options
-function generatePassword() 
+function generatePassword() {
   var userCharacters = prompt(
     "How many characters should the password include?"
   );
@@ -43,24 +43,24 @@ function generatePassword()
     );
   }
 
-// Check to ensure each char type is used and stops if false
+  // Check to ensure each char type is used and stops if false
 if ([inclNumCharacters, inclLowCaseCharacters, inclUpCaseCharacters, inclSpecCharacters].includes(true))
 
-// Created an Array to contain character types needed for the password
-var selectCharacters = [];
-console.log("Array #1")
+  // Created an Array to contain character types needed for the password
+  var selectCharacters = [];
+  console.log("Array #1")
 
-// Created an array that will include a one character of each type
-var neededCharacters = [];
-console.log("Array #2")
+  // Created an array that will include a one character of each type
+  var neededCharacters = [];
+  console.log("Array #2")
 
-// Create a loop that checks to make sure each character type was included
-if (inclNumCharacters) {
-  selectCharacters = selectCharacters.concat(numCharacters);
-  neededCharacters.push(
-    numCharacters[Math.floor(Math.random() * numCharacters.length)]
-  );
-}
+  // Create a loop that checks to make sure each character type was included
+  if (inclNumCharacters) {
+    selectCharacters = selectCharacters.concat(numCharacters);
+    neededCharacters.push(
+      numCharacters[Math.floor(Math.random() * numCharacters.length)]
+    );
+  }
 
 if (inclLowCaseCharacters) {
   selectCharacters = selectCharacters.concat(lowerCaseCharacters);
@@ -103,6 +103,9 @@ while (neededCharacters.length > 0) {
 }
 // **w3schools** join returns the array as a string
 return replace.join(" ")
+
+}
+
 
 // Write password to the #password input
 function writePassword() {
