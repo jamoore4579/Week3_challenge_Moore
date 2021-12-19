@@ -5,16 +5,17 @@ var generateBtn = document.querySelector("#generate");
 
 // Check input from User
 function passwordChar(userCharacters) {
-  if (Number.isNaN(userCharacters)) {
+  if (isNaN(userCharacters)) {
     alert("Valid Number must be entered");
     return false;
-  } else if (Number.parseInt(userCharacters) <8) {
-    alert("Password needs be at least 8 characters");
-    return false;
-  } else if (Number.parseInt(userCharacters) >=128) {
-    alert("Password can not exceed 128 characters");
-    return false;
-  }
+  
+    } else if (Number.parseInt(userCharacters) <8) {
+      alert("Password needs be at least 8 characters");
+      return false;
+    } else if (Number.parseInt(userCharacters) >=128) {
+      alert("Password can not exceed 128 characters");
+      return false;
+    }
   return true;
 }
 
@@ -28,6 +29,7 @@ function generatePassword() {
   var userCharacters = prompt(
     "How many characters should the password include?"
   );
+  
   var passwordIncld = passwordChar(userCharacters);
   if (passwordIncld) {
     
