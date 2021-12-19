@@ -19,7 +19,7 @@ function passwordChar(userCharacters) {
 }
 
 // Need to prompt user to provide password options
-function generatePassword() {
+function generatePassword() 
   var userCharacters = prompt(
     "How many characters should the password include?"
   );
@@ -42,7 +42,6 @@ function generatePassword() {
       "Special Characters Confirmed"
     );
   }
-}
 
 // Check to ensure each char type is used and stops if false
 if ([inclNumCharacters, inclLowCaseCharacters, inclUpCaseCharacters, inclSpecCharacters].includes(true))
@@ -84,6 +83,27 @@ if (inclSpecCharacters) {
   );
 }
 
+// For Loop to determine the random characters
+var randomCharacter = [];
+for (var i = 0; i < userCharacters; i++) {
+  var character = Math.floor(Math.random() * selectCharacters.length);
+  randomCharacter.push(selectCharacters[character]);
+}
+
+var replace = {}
+
+// While loop
+while (neededCharacters.length > 0) {
+  var replaceChar = Math.floor(Math.random() * randomCharacter.length);
+  if (!replace[replaceChar]) {
+    // **w3schools** pop removing the last element of the array
+    randomCharacter[replaceChar] = neededCharacters.pop();
+    replace[replaceChar] = true;
+  }
+}
+// **w3schools** join returns the array as a string
+return replace.join(" ")
+
 // Write password to the #password input
 function writePassword() {
   var password = generatePassword();
@@ -91,13 +111,6 @@ function writePassword() {
 
   passwordText.value = password;
 
-}
-
-// For Loop to determine the random characters
-var randomCharacter = [];
-for (var i = 0; i < userCharacters; i++) {
-  var character = Math.floor(Math.random() * selectCharacters.length);
-  randomCharacter.push(selectCharacters[character]);
 }
 
 // Add event listener to generate button
